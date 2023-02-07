@@ -2,6 +2,48 @@ const colors = ["red", "green", "blue"];
 const styles = ["blank", "transparent", "solid"];
 const shapes = ["rectangle", "circle", "triangle"];
 
+const cards = [];
+colors.forEach((color) => {
+  styles.forEach((style) => {
+    shapes.forEach((shape) => {
+      for (let shapeCount = 1; shapeCount <= 3; shapeCount++) {
+        const card = {
+          style,
+          color,
+          shape,
+          shapeCount,
+        };
+        cards.push(card);
+      }
+    });
+  });
+})
+
+for (let style = 1; style <= 3; style++) {
+  for (let color = 0; color < 3; color++) {
+    for (let shape = 0; shape < 3; shape++) {
+      for (let shapeCount = 1; shapeCount <= 3; shapeCount++) {
+        const card = {
+          style: styles[style - 1],
+          color: colors[color],
+          shape: shapes[shape],
+          shapeCount: shapeCount,
+        };
+        cards.push(card);
+      }
+    }
+  }
+    
+    const card = {
+      style: styles[style - 1],
+      color: colors[color],
+      shapes: ...,
+      shapeCount: ...,
+    }
+    cards.push(card)
+  }
+}
+
 const patterns = {
   solid: {
     red: { fill: "OrangeRed", stroke: "OrangeRed", strokeWeight: 0 },
@@ -53,15 +95,16 @@ const shapeHeight = cardHeight * cardPaddings.height;
 for (let row = 1; row <= rows; row++) {
   for (let column = 1; column <= columns; column++) {
     const card = {
-      color: colors[row - 1],
+      color: colors[randowmInt(0, 2)],
       style: styles[(column - 1) % 3],
       shape: shapes[row - 1],
-      shapeCount: row,
+      shapeCount: randomInt(1, 3)),
     };
     console.log(card);
     drawCard(card, { row, column });
   }
 }
+
 
 function drawCard({ color, style, shape, shapeCount }, { row, column }) {
   const cardLeftX =
